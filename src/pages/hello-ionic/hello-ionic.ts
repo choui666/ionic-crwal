@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
+import {InAppBrowser, InAppBrowserObject} from "@ionic-native/in-app-browser";
 
 @Component({
     selector: 'page-hello-ionic',
@@ -8,8 +9,9 @@ import {DataServiceProvider} from "../../providers/data-service/data-service";
 export class HelloIonicPage implements OnInit{
 
     newsList:{title:string,href:string}[];
+    browser:InAppBrowserObject;
 
-    constructor(private service: DataServiceProvider) {
+    constructor(private service: DataServiceProvider,private iab: InAppBrowser) {
 
     }
 
@@ -20,6 +22,6 @@ export class HelloIonicPage implements OnInit{
     }
 
     openNews(url:string){
-        console.log(url);
+         this.browser = this.iab.create(url,'_blank', {location:'no',zoom:'yes'});
     }
 }

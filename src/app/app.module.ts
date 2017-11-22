@@ -17,6 +17,7 @@ import {DataServiceProvider} from '../providers/data-service/data-service';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {interCeptor} from "../providers/httpInterceptor/index";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {interCeptor} from "../providers/httpInterceptor/index";
             provide: HTTP_INTERCEPTORS,
             useClass: interCeptor.loading,
             multi: true,
-        }
+        },
+        InAppBrowser
 
     ]
 })
